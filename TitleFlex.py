@@ -25,6 +25,7 @@ class TitleFlex:
 
         username = os.environ["TITLEFLEX_USER"]
         assert username is not None
+        
         return username
 
 
@@ -33,6 +34,7 @@ class TitleFlex:
 
         password = os.environ["TITLEFLEX_PW"]
         assert password is not None
+        
         return password
 
 
@@ -124,6 +126,7 @@ class TitleFlex:
 
         apn_path = "/html/body/div[1]/div[4]/section/div[3]/section/div[1]/div[2]/div[2]/div[2]/div/div/div[1]/div[2]/div[3]/div[1]/div/span"
         apn = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, apn_path))).text
+        
         return {"APN": apn}
 
 
@@ -132,6 +135,7 @@ class TitleFlex:
         living_area_field_path = "/html/body/div[1]/div[4]/section/div[3]/section/div[1]/div[2]/div[2]/div[2]/div/div/div[1]/div[2]/div[3]/div[3]/div[3]/span"
         living_area_field = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, living_area_field_path))).text
         living_area = int(living_area_field.split()[0].replace(',', ''))
+
         return  {"Square Footage": living_area}
 
 
@@ -263,6 +267,7 @@ class TitleFlex:
         owners_path = "/html/body/div[1]/div[4]/section/div[3]/section/div[1]/div[2]/div[2]/div[2]/div/div/div[1]/div[2]/div[2]"
         owners = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, owners_path))).get_attribute("title")
         owners = [name.strip() for name in owners.split("/")]
+
         return {"Owners":owners}
 
 
