@@ -10,12 +10,12 @@ titleflex.com, zillow.com, and realtor.com
 ## INSTRUCTIONS
 To get address data, run  
 ```
-python Main.py <ADDRESS>
+python main.py <ADDRESS>
 ```
 
 Example  
 ```
-python Main.py 6560 Arundel Pl, San Diego, CA 92117
+python main.py 6560 Arundel Pl, San Diego, CA 92117
 ```
 
 ## DATA
