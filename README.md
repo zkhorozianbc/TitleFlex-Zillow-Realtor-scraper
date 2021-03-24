@@ -14,9 +14,9 @@ python Main.py <ADDRESS>
 ```
 
 Example  
-	```
-	python Main.py 6560 Arundel Pl, San Diego, CA 92117
-	```
+```
+python Main.py 6560 Arundel Pl, San Diego, CA 92117
+```
 
 ## DATA
 	See property_data.json for output
