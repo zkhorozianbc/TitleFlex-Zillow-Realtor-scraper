@@ -9,10 +9,13 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 import os
 
+
 class FirefoxDriver:
 	def __init__(self):
+
 		self.firefox_driver_path = os.path.join("usr/local/bin/geckodriver")
 		self.ff_profile = self.initialize_profile_settings()
+
 
 	def initialize_profile_settings(self):
 
@@ -29,7 +32,9 @@ class FirefoxDriver:
 
 		return ff_profile
 
+
 	def get_driver(self):
+
 		driver = webdriver.Firefox(executable_path=self.firefox_driver_path, firefox_profile=self.ff_profile)
 		driver.set_page_load_timeout(200)
 		return driver
