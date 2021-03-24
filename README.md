@@ -9,7 +9,7 @@ titleflex.com, zillow.com, and realtor.com
 
 ## INSTRUCTIONS
 In terminal run python Main.py <ADDRESS> to search ADDRESS
-Example
+Example  
 	```
 	python Main.py 6560 Arundel Pl, San Diego, CA 92117
 	```
