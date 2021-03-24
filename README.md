@@ -8,7 +8,11 @@ titleflex.com, zillow.com, and realtor.com
 * TitleFlex Account
 
 ## INSTRUCTIONS
-In terminal run python Main.py <ADDRESS> to search ADDRESS
+To get address data, run  
+```
+python Main.py <ADDRESS>
+```
+
 Example  
 	```
 	python Main.py 6560 Arundel Pl, San Diego, CA 92117
