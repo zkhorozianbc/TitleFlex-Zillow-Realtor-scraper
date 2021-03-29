@@ -19,4 +19,4 @@ python main.py 10236 Charing Cross Rd., Los Angeles, Calif. 90024
 ```
 
 ## Data
-See property_data.json for anonymized, example output from random property
+See property_data.json for random and anonymized example output
