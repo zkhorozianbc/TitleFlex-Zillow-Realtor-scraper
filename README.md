@@ -15,8 +15,8 @@ python main.py <ADDRESS>
 
 Example  
 ```
-python main.py 6560 Arundel Pl, San Diego, CA 92117
+python main.py 10236 Charing Cross Rd., Los Angeles, Calif. 90024
 ```
 
 ## Data
-See property_data.json for example output
+See property_data.json for anonymized,example output from random property
