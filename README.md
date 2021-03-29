@@ -19,4 +19,4 @@ python main.py 6560 Arundel Pl, San Diego, CA 92117
 ```
 
 ## Data
-See property_data.json for output
+See property_data.json for example output
