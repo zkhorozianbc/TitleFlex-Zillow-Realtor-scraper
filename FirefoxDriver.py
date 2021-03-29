@@ -36,7 +36,7 @@ class FirefoxDriver:
 
 	def get_driver(self):
 
-		driver = webdriver.Firefox(executable_path=self.ff_driver_path, firefox_profile=self.firefox_profile)
+		driver = webdriver.Firefox(executable_path=self.firefox_driver_path, firefox_profile=self.firefox_profile)
 		driver.set_page_load_timeout(200)
 
 		return driver
