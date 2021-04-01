@@ -34,6 +34,6 @@ def main():
 	
 
 
-#Get address from sys args 
+
 if __name__ == "__main__":
 	main()
