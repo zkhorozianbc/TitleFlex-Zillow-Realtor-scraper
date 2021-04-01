@@ -15,7 +15,7 @@ python main.py [-a,--address] ADDRESS
 
 Example  
 ```
-python main.py 10236 Charing Cross Rd., Los Angeles, Calif. 90024
+python main.py --address 10236 Charing Cross Rd., Los Angeles, Calif. 90024
 ```
 
 ## Data
