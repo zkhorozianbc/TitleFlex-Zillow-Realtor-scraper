@@ -36,7 +36,6 @@ def main(args):
 if __name__ == "__main__":
 
 	parser = argparse.ArgumentParser()
-
 	parser.add_argument(
 	    "--address",
 		"-a",
@@ -51,7 +50,6 @@ if __name__ == "__main__":
 	    help="Print verbose logs",
 	    action='store_true'
 	)
-	
 	args = parser.parse_args()
 
 	main(args)
