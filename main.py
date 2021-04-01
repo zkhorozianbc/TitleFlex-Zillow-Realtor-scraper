@@ -4,12 +4,6 @@ import sys
 import json
 import argparse
 
-def write_property_data_to_file(property_data,filename="property_data.json"):
-
-	#creates json file from property_data dict and 
-	#saves in current directory
-	with open(filename, 'w') as f:
-		json.dump(property_data, f, indent=4, sort_keys=True)
 
 def main(args):
 
@@ -26,7 +20,8 @@ def main(args):
 	property_data = titleflex.get_property_data(address)
 
 	#write property_data dict to property_data.json
-	write_property_data_to_file(property_data)
+	with open(filename, 'w') as f:
+		json.dump(property_data, f, indent=4, sort_keys=True)
 
 	#close driver
 	driver.close()
