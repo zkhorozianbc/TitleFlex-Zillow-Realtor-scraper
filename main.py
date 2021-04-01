@@ -7,7 +7,7 @@ import argparse
 
 def main(args):
 
-	#parse address from command line, throw error if none provided
+	#parse address from command line args
 	address = " ".join(args.address)
 
 	## Firefox Webdriver with custom settings 
