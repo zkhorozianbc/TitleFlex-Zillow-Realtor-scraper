@@ -10,7 +10,7 @@ titleflex.com, zillow.com, and realtor.com
 ## Instructions
 To get address data, run  
 ```
-python main.py <ADDRESS>
+python main.py [-a,--address] ADDRESS
 ```
 
 Example  
