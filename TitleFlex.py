@@ -13,16 +13,29 @@ import sys
 import time
 import json
 
+from typing import (
+    List,
+    Dict,
+    Iterable,
+    Optional,
+    Union,
+    Any,
+    Callable,
+    Sequence,
+    Tuple
+)
+
+
 
 class TitleFlex:
-    
-    def __init__(self,driver):
+
+    def __init__(self, driver: selenium.webdriver) -> None:
 
         self.driver = driver
         
 
     @property
-    def tf_username(self):
+    def tf_username(self) -> str:
 
         username = os.environ["TITLEFLEX_USER"]
         assert username is not None
@@ -31,7 +44,7 @@ class TitleFlex:
 
 
     @property
-    def tf_password(self):
+    def tf_password(self) -> str:
 
         password = os.environ["TITLEFLEX_PW"]
         assert password is not None
@@ -39,7 +52,7 @@ class TitleFlex:
         return password
 
 
-    def get_property_data(self,address):
+    def get_property_data(self,address: str) -> Dict[str,Any]:
 
         self.login()
         self.search_property(address)
@@ -64,7 +77,6 @@ class TitleFlex:
                                     self.get_living_area,
                                     self.get_zillow_data,
                                     self.get_realtor_data
-
                             ]   
         
         for getter_func in property_data_getters:
@@ -75,7 +87,8 @@ class TitleFlex:
         return property_data
         
 
-    def login(self):
+    
+    def login(self) -> None:
 
         username_form_id = "UserName"
         password_form_id = "Password"
@@ -92,7 +105,7 @@ class TitleFlex:
         time.sleep(4)
 
 
-    def is_complex_address(self):
+    def is_complex_address(self) -> bool:
 
         try:
             complex_path = "/html/body/div[1]/div[4]/section/div[3]/section/div[1]/div[2]/div[2]/div[1]/div[2]/div[1]/p"
@@ -102,7 +115,7 @@ class TitleFlex:
             return False
 
 
-    def search_property(self,address):
+    def search_property(self,address: str) -> None:
 
         address_form_path = "/html/body/div[1]/div[2]/header/form/div[2]/div[2]/span[1]/span/input"
         
@@ -111,7 +124,7 @@ class TitleFlex:
         address_form.send_keys(Keys.RETURN)
 
 
-    def handle_popups(self):
+    def handle_popups(self) -> None:
 
         cookie_btn_id = "ccpa-gotit"
         popup_path = "/html/body/div[10]/div/div/div[3]/button"
@@ -123,7 +136,7 @@ class TitleFlex:
         popup_btn.click()
 
 
-    def get_apn(self):
+    def get_apn(self) -> Dict[str,str]:
 
         apn_path = "/html/body/div[1]/div[4]/section/div[3]/section/div[1]/div[2]/div[2]/div[2]/div/div/div[1]/div[2]/div[3]/div[1]/div/span"
         apn = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, apn_path))).text
@@ -131,7 +144,7 @@ class TitleFlex:
         return {"APN": apn}
 
 
-    def get_living_area(self):
+    def get_living_area(self) -> Dict[str,Optional[int]]:
 
         living_area_field_path = "/html/body/div[1]/div[4]/section/div[3]/section/div[1]/div[2]/div[2]/div[2]/div/div/div[1]/div[2]/div[3]/div[3]/div[3]/span"
         living_area_field = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, living_area_field_path))).text
@@ -140,7 +153,7 @@ class TitleFlex:
         return  {"Square Footage": living_area}
 
 
-    def get_bedrooms(self):
+    def get_bedrooms(self) -> Dict[str,Optional[int]]:
 
         bedrooms,bathrooms = 0,0
         try:
@@ -157,7 +170,7 @@ class TitleFlex:
         return {"Bedrooms": bedrooms, "Bathrooms":bathrooms}
 
 
-    def get_zillow_data(self):
+    def get_zillow_data(self) -> Dict[str,Optional[int]]:
 
         #show links dropdown on titleflex
         links_element_path = '/html/body/div[1]/div[4]/section/div[3]/section/div[1]/div[2]/div[1]/div/ul/li[11]/a'
@@ -198,7 +211,7 @@ class TitleFlex:
         return {"Market Value": zestimate}
 
 
-    def get_realtor_data(self):
+    def get_realtor_data(self) -> Dict[str,Optional[int]]:
 
         links_element_path = '/html/body/div[1]/div[4]/section/div[3]/section/div[1]/div[2]/div[1]/div/ul/li[11]/a'
         links_element = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, links_element_path)))
@@ -263,7 +276,7 @@ class TitleFlex:
                 "Stories":stories}
 
 
-    def get_owners(self):
+    def get_owners(self) -> Dict[str,Optional[List[str]]]:
 
         owners_path = "/html/body/div[1]/div[4]/section/div[3]/section/div[1]/div[2]/div[2]/div[2]/div/div/div[1]/div[2]/div[2]"
         owners = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, owners_path))).get_attribute("title")
@@ -272,7 +285,7 @@ class TitleFlex:
         return {"Owners":owners}
 
 
-    def logout(self):
+    def logout(self) -> None:
 
         profile_dropdown_path = "/html/body/div[1]/div[2]/header/div/div/ul/li/div[2]/a"
         logout_btn_path = "/html/body/div[1]/div[2]/header/div/div/ul/li/ul/li[8]/a"

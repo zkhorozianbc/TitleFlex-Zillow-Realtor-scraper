@@ -13,12 +13,12 @@ import os
 class FirefoxDriver:
 	
 	@property
-	def firefox_driver_path(self):
+	def firefox_driver_path(self) -> str:
 		path = os.path.join("usr/local/bin/geckodriver")
 		return path
 
 	@property
-	def firefox_profile(self):
+	def firefox_profile(self) -> webdriver.FirefoxProfile:
 
 		firefox_profile = webdriver.FirefoxProfile()
 		firefox_profile.set_preference("browser.download.folderList", 2)
@@ -34,7 +34,7 @@ class FirefoxDriver:
 		return firefox_profile
 
 
-	def get_driver(self):
+	def get_driver(self) -> webdriver.Firefox:
 
 		driver = webdriver.Firefox(executable_path=self.firefox_driver_path, firefox_profile=self.firefox_profile)
 		driver.set_page_load_timeout(200)
